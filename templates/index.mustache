@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit Converter</h1>
+        <div id="tabs">
+            <button>Length</button>
+            <button disabled>Weight</button>
+            <button disabled>Temperature</button>
+        </div>
+        <div id="content">
+            <form action="/convert" method="POST">
+                <label for="length">Enter the length to convert</label>
+                <input type="text" id="length" name="length" required>
+
+                <label for="fromUnit">Unit to Convert from</label>
+                <input type="text" id="fromUnit" name="fromUnit" placeholder="e.g., ft" required>
+
+                <label for="toUnit">Unit to Convert to</label>
+                <input type="text" id="toUnit" name="toUnit" placeholder="e.g., cm" required>
+
+                <button type="submit">Convert</button>
+            </form>
+            {{#Result}}
+            <div id="result">
+                <p>{{Result}}</p>
+                <a href="/" class="reset-button">Reset</a>
+            </div>
+            {{/Result}}
+        </div>
+    </div>
+</body>
+</html>
