@@ -2,13 +2,10 @@ module github.com/fhasnur/unit-converter
 
 go 1.22.0
 
+require github.com/gofiber/fiber/v2 v2.52.5
+
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/cbroglie/mustache v1.4.0 // indirect
-	github.com/gofiber/fiber/v2 v2.52.5 // indirect
-	github.com/gofiber/template v1.8.3 // indirect
-	github.com/gofiber/template/mustache/v2 v2.0.12 // indirect
-	github.com/gofiber/utils v1.1.0 // indirect
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
