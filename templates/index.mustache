@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Unit Converter</h1>
-        <div id="tabs">
-            <button>Length</button>
-            <button disabled>Weight</button>
-            <button disabled>Temperature</button>
+        <div class="tabs">
+            <button id="defaultOpen" class="tablinks" onclick="openConverter(event, 'length')">Length</button>
+            <button class="tablinks" onclick="openConverter(event, 'weight')">Weight</button>
+            <button class="tablinks" onclick="openConverter(event, 'temperature')">Temperature</button>
         </div>
-        <div id="content">
-            <form action="/convert" method="POST">
-                <label for="length">Enter the length to convert</label>
-                <input type="text" id="length" name="length" required>
 
-                <label for="fromUnit">Unit to Convert from</label>
-                <input type="text" id="fromUnit" name="fromUnit" placeholder="e.g., ft" required>
-
-                <label for="toUnit">Unit to Convert to</label>
-                <input type="text" id="toUnit" name="toUnit" placeholder="e.g., cm" required>
-
+        <div id="length" class="tabcontent">
+            <form method="POST">
+                <label>Value</label>
+                <input type="number" name="value" placeholder="Enter value" required>
+                <label>From</label>
+                <select name="from">
+                    <option value="millimeter">Millimeter</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="inch">Inch</option>
+                    <option value="foot">Foot</option>
+                    <option value="yard">Yard</option>
+                    <option value="mile">Mile</option>
+                </select>
+                <label>To</label>
+                <select name="to">
+                    <option value="millimeter">Millimeter</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="inch">Inch</option>
+                    <option value="foot">Foot</option>
+                    <option value="yard">Yard</option>
+                    <option value="mile">Mile</option>
+                </select>
                 <button type="submit">Convert</button>
             </form>
-            {{#Result}}
-            <div id="result">
-                <p>{{Result}}</p>
-                <a href="/" class="reset-button">Reset</a>
-            </div>
-            {{/Result}}
         </div>
-    </div>
+
+        <div id="weight" class="tabcontent" style="display:none;">
+            <form method="POST">
+                <label>Value</label>
+                <input type="number" name="value" placeholder="Enter value" required>
+                <label>From</label>
+                <select name="from">
+                    <option value="miligram">Miligram</option>
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="ounce">Ounce</option>
+                    <option value="pound">Pound</option>
+                </select>
+                <label>To</label>
+                <select name="to">
+                    <option value="miligram">Miligram</option>
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="ounce">Ounce</option>
+                    <option value="pound">Pound</option>
+                </select>
+                <button type="submit">Convert</button>
+            </form>
+        </div>
+
+        <div id="temperature" class="tabcontent" style="display:none;">
+            <form method="POST">
+                <label>Value</label>
+                <input type="number" name="value" placeholder="Enter value" required>
+                <label>From</label>
+                <select name="from">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+                <label>To</label>
+                <select name="to">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+                <button type="submit">Convert</button>
+            </form>
+        </div>
 </body>
+
+<script src="/static/script.js"></script>
+
 </html>
