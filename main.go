@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/fhasnur/unit-converter/internal/converter"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/mustache/v2"
 )
@@ -14,13 +15,17 @@ func main() {
 
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Render("index", fiber.Map{
-			"Result": "",
+			"LengthResult":      nil,
+			"WeightResult":      nil,
+			"TemperatureResult": nil,
 		})
 	})
 
+	app.Post("/length", converter.ConvertLength)
+
 	app.Static("/static", "./static")
 
-	err := app.Listen(":3000")
+	err := app.Listen(":8080")
 	if err != nil {
 		panic(err)
 	}

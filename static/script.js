@@ -19,4 +19,9 @@ const openConverter = (evt, converter) => {
   }
 };
 
+function resetForm() {
+  document.querySelector('.result').style.display = 'none';
+  document.querySelector('.btn-reset').style.display = 'none';
+}
+
 document.getElementById("defaultOpen")?.click();

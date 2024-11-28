@@ -1,3 +1,5 @@
+@import "~font-awesome/css/font-awesome.css";
+
 body {
     font-family: Inter, sans-serif;
     margin: 0;
@@ -17,12 +19,11 @@ body {
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     width: 100%;
-    text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+    text-align: center; 
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     margin-top: -2px;
     margin-bottom: 24px;
     font-weight: 700;
@@ -76,9 +77,9 @@ label {
 }
 
 input, select {
-    padding: 15px;
+    padding: 14px 16px;
     font-size: 1rem;
-    border: 2px solid #ddd;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
     background: #fff;
     color: #333;
@@ -98,9 +99,9 @@ form > div {
     gap: 40px;
 }
 
-button[type="submit"] {
-    padding: 12px 16px;
-    margin-top: 40px;
+.btn-submit {
+    padding: 14px 16px;
+    margin-top: 30px;
     font-size: 1.1rem;
     font-weight: 600;
     background: #007bff;
@@ -111,35 +112,41 @@ button[type="submit"] {
     transition: background 0.3s ease, transform 0.1s ease;
 }
 
-button[type="submit"]:hover {
+.btn-submit:hover {
     background: #1082fd;
 }   
 
-#result {
+.result {
     margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333;
-    padding: 16px;
-    background: #f1f1f1;
+    font-size: 1rem;
+    color: #333;;
     border: 1px solid #e0e0e0;
+    padding: 10px 18px;
     border-radius: 8px;
 }
 
-.reset-button {
+.btn-reset {
     margin-top: 20px;
-    padding: 10px;
+    padding: 14px 16px; 
     font-size: 1rem;
     font-weight: 500;
     background: transparent;
-    color: #007bff;
-    border: none;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    width: 100%;    
+    transition: background 0.3s ease, transform 0.1s ease;
 }
 
-.reset-button:hover {
-    color: #0056b3;
+.btn-reset:hover {
+    background-color: #f8f8f8;
+}
+
+button i {
+    font-weight: 500;
+    margin-right: 6px;
+    font-size: 1em;
 }
 
 @keyframes fadeIn {
