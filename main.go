@@ -22,6 +22,7 @@ func main() {
 	})
 
 	app.Post("/length", converter.ConvertLength)
+	app.Post("/weight", converter.ConvertWeight)
 
 	app.Static("/static", "./static")
 
