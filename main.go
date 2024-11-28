@@ -23,6 +23,7 @@ func main() {
 
 	app.Post("/length", converter.ConvertLength)
 	app.Post("/weight", converter.ConvertWeight)
+	app.Post("/temperature", converter.ConvertTemperature)
 
 	app.Static("/static", "./static")
 
