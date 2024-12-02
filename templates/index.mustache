@@ -13,42 +13,35 @@
     <div class="container">
         <h1>Unit Converter</h1>
         <div class="tabs">
-            <button id="defaultOpen" class="tablinks" onclick="openConverter(event, 'length')">Length</button>
-            <button class="tablinks" onclick="openConverter(event, 'weight')">Weight</button>
-            <button class="tablinks" onclick="openConverter(event, 'temperature')">Temperature</button>
+            {{#Converters}}
+            <button {{#active}}id="defaultOpen" {{/active}} class="tablinks"
+                onclick="openConverter(event, '{{Id}}')">{{Title}}</button>
+            {{/Converters}}
         </div>
 
-        <div id="length" class="tabcontent">
-            <form method="POST" action="/length">
+        {{#Converters}}
+        <div id="{{Id}}" class="tabcontent">
+            <form method="POST" action="{{Action}}">
                 <label>Value</label>
-                <input type="number" name="value" placeholder="Enter value" required>
+                <input type=" number" name="value" placeholder="Enter value" required>
                 <label>From</label>
                 <select name="from">
-                    <option value="millimeter">Millimeter</option>
-                    <option value="centimeter">Centimeter</option>
-                    <option value="meter">Meter</option>
-                    <option value="kilometer">Kilometer</option>
-                    <option value="inch">Inch</option>
-                    <option value="foot">Foot</option>
-                    <option value="yard">Yard</option>
-                    <option value="mile">Mile</option>
+                    {{#Options}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{/Options}}
                 </select>
                 <label>To</label>
                 <select name="to">
-                    <option value="millimeter">Millimeter</option>
-                    <option value="centimeter">Centimeter</option>
-                    <option value="meter">Meter</option>
-                    <option value="kilometer">Kilometer</option>
-                    <option value="inch">Inch</option>
-                    <option value="foot">Foot</option>
-                    <option value="yard">Yard</option>
-                    <option value="mile">Mile</option>
+                    {{#Options}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{/Options}}
                 </select>
                 <button class="btn-submit" type="submit">
                     <i class="fas fa-exchange"></i> Convert
                 </button>
             </form>
-            {{#LengthResult}}
+
+            {{#Result}}
             <div class="result">
                 <h3>Result of your calculation</h3>
                 <p>{{InputValue}} {{FromUnit}} = {{ConvertedValue}} {{ToUnit}}</p>
@@ -56,74 +49,10 @@
             <button class="btn-reset" onclick="resetForm()">
                 <i class="fas fa-refresh"></i> Reset
             </button>
-            {{/LengthResult}}
+            {{/Result}}
         </div>
-
-        <div id="weight" class="tabcontent" style="display:none;">
-            <form method="POST" action="/weight">
-                <label>Value</label>
-                <input type="number" name="value" placeholder="Enter value" required>
-                <label>From</label>
-                <select name="from">
-                    <option value="milligram">Miligram</option>
-                    <option value="gram">Gram</option>
-                    <option value="kilogram">Kilogram</option>
-                    <option value="ounce">Ounce</option>
-                    <option value="pound">Pound</option>
-                </select>
-                <label>To</label>
-                <select name="to">
-                    <option value="milligram">Miligram</option>
-                    <option value="gram">Gram</option>
-                    <option value="kilogram">Kilogram</option>
-                    <option value="ounce">Ounce</option>
-                    <option value="pound">Pound</option>
-                </select>
-                <button class="btn-submit" type="submit">
-                    <i class="fas fa-exchange"></i> Convert
-                </button>
-            </form>
-            {{#WeightResult}}
-            <div class="result">
-                <h3>Result of your calculation</h3>
-                <p>{{InputValue}} {{FromUnit}} = {{ConvertedValue}} {{ToUnit}}</p>
-            </div>
-            <button class="btn-reset" onclick="resetForm()">
-                <i class="fas fa-refresh"></i> Reset
-            </button>
-            {{/WeightResult}}
-        </div>
-
-        <div id="temperature" class="tabcontent" style="display:none;">
-            <form method="POST" action="/temperature">
-                <label>Value</label>
-                <input type="number" name="value" placeholder="Enter value" required>
-                <label>From</label>
-                <select name="from">
-                    <option value="celsius">Celsius</option>
-                    <option value="fahrenheit">Fahrenheit</option>
-                    <option value="kelvin">Kelvin</option>
-                </select>
-                <label>To</label>
-                <select name="to">
-                    <option value="celsius">Celsius</option>
-                    <option value="fahrenheit">Fahrenheit</option>
-                    <option value="kelvin">Kelvin</option>
-                </select>
-                <button class="btn-submit" type="submit">
-                    <i class="fas fa-exchange"></i> Convert
-                </button>
-            </form>
-            {{#TemperatureResult}}
-            <div class="result">
-                <h3>Result of your calculation</h3>
-                <p>{{InputValue}} {{FromUnit}} = {{ConvertedValue}} {{ToUnit}}</p>
-            </div>
-            <button class="btn-reset" onclick="resetForm()">
-                <i class="fas fa-refresh"></i> Reset
-            </button>
-            {{/TemperatureResult}}
-        </div>
+        {{/Converters}}
+    </div>
 </body>
 
 <script src="/static/script.js"></script>

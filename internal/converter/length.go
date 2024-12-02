@@ -3,6 +3,7 @@ package converter
 import (
 	"strconv"
 
+	"github.com/fhasnur/unit-converter/internal/data"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -35,13 +36,18 @@ func ConvertLength(ctx *fiber.Ctx) error {
 
 	convertedValue := (value * fromFactor) / toFactor
 
+	lengthResult := fiber.Map{
+		"InputValue":     value,
+		"FromUnit":       fromUnit,
+		"ToUnit":         toUnit,
+		"ConvertedValue": convertedValue,
+	}
+
+	dataUnits := data.GetDataUnits(lengthResult, nil, nil)
+
 	return ctx.Render("index", fiber.Map{
-		"LengthResult": fiber.Map{
-			"InputValue":     value,
-			"FromUnit":       fromUnit,
-			"ToUnit":         toUnit,
-			"ConvertedValue": convertedValue,
-		},
+		"Converters":        dataUnits,
+		"LengthResult":      lengthResult,
 		"WeightResult":      nil,
 		"TemperatureResult": nil,
 	})

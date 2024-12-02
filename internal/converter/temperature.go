@@ -3,6 +3,7 @@ package converter
 import (
 	"strconv"
 
+	"github.com/fhasnur/unit-converter/internal/data"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -36,14 +37,19 @@ func ConvertTemperature(ctx *fiber.Ctx) error {
 		return ctx.Status(fiber.StatusBadRequest).SendString("Invalid units")
 	}
 
+	temperatureResult := fiber.Map{
+		"InputValue":     value,
+		"FromUnit":       fromUnit,
+		"ToUnit":         toUnit,
+		"ConvertedValue": convertedValue,
+	}
+
+	dataUnits := data.GetDataUnits(nil, nil, temperatureResult)
+
 	return ctx.Render("index", fiber.Map{
-		"LenghtResult": nil,
-		"WeightResult": nil,
-		"TemperatureResult": fiber.Map{
-			"InputValue":     value,
-			"FromUnit":       fromUnit,
-			"ToUnit":         toUnit,
-			"ConvertedValue": convertedValue,
-		},
+		"Converters":        dataUnits,
+		"LengthResult":      nil,
+		"WeightResult":      nil,
+		"TemperatureResult": temperatureResult,
 	})
 }
