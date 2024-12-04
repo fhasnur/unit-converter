@@ -19,9 +19,11 @@ const openConverter = (evt, converter) => {
   }
 };
 
-function resetForm() {
-  document.querySelector('.result').style.display = 'none';
-  document.querySelector('.btn-reset').style.display = 'none';
-}
+const resetResult = () => {
+  const contentResults = document.querySelectorAll(".result");
+  contentResults.forEach((result) => (result.style.display = "none"));
+};
 
-document.getElementById("defaultOpen")?.click();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("defaultOpen")?.click();
+});
