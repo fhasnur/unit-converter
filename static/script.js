@@ -14,6 +14,8 @@ const openConverter = (evt, converter) => {
   if (selectedTab) {
     selectedTab.style.display = "block";
     evt.currentTarget.className += " active";
+
+    localStorage.setItem("activeTab", converter);
   } else {
     console.error(`Tab with ID "${converter}" not found.`);
   }
@@ -25,5 +27,15 @@ const resetResult = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("defaultOpen")?.click();
+  const activeTab = localStorage.getItem("activeTab") || 'length';
+
+  if (activeTab) {
+    const activeTabElement = document.getElementById(activeTab);
+    const activeTabButton = document.querySelector(`button[onclick*="${activeTab}"]`);
+
+    if (activeTabElement && activeTabButton) {
+      activeTabElement.style.display = "block";
+      activeTabButton.classList.add("active");
+    }
+  }
 });
