@@ -23,7 +23,7 @@
         <div id="{{Id}}" class="tabcontent">
             <form method="POST" action="{{Action}}">
                 <label>Value</label>
-                <input type="number" name="value" placeholder="Enter value" required>
+                <input type="number" name="value" placeholder="Enter a value" step="any" required>
                 <label>From</label>
                 <select name="from">
                     {{#Options}}
@@ -44,8 +44,7 @@
             {{#Result}}
             {{#Result.InputValue}}
             <div class="result">
-                <h3>Result of the calculation</h3>
-                <p>{{InputValue}} {{FromUnit}} = {{ConvertedValue}} {{ToUnit}}</p>
+                <h3>{{InputValue}} {{FromUnit}} = {{ConvertedValue}} {{ToUnit}}</h3>
                 <button class="btn-reset" onclick="resetResult()">
                     <i class="fas fa-refresh"></i> Reset
                 </button>
