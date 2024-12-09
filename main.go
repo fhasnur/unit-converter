@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/fhasnur/unit-converter/internal/converter"
 	"github.com/fhasnur/unit-converter/internal/handler"
 	"github.com/gofiber/fiber/v2"
@@ -21,7 +24,12 @@ func main() {
 
 	app.Static("/static", "./static")
 
-	err := app.Listen(":3000")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+
+	err := app.Listen(fmt.Sprintf(":%s", port))
 	if err != nil {
 		panic(err)
 	}
