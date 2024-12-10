@@ -46,7 +46,7 @@ http://localhost:3000
 ## Project Structure
 
 ```bash
-unit-converter/                 
+unit-converter/
 ├── assets/
 │   └── unit-converter.png    # Screenshot of the Unit Converter
 ├── internal/
@@ -63,6 +63,11 @@ unit-converter/
 ├── static/
 │   ├── style.css             # Styling
 │   └── script.js             # User interaction logic
+├── .env                      # Environment variables (for production)
+├── .env.example              # Example of environment variables
+├── .gitignore                # Files and directories to be ignored by Git
+├── Dockerfile                # Docker configuration
+├── railway.json              # Railway deployment configuration
 ├── go.mod                    # Go module information
 ├── go.sum                    # Dependency checksum
 ├── main.go                   # Application entry point
