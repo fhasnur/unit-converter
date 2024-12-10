@@ -1,1 +1,12 @@
+# Ignore binary files
+/main
+
+# Environment files
 .env
+
+# Dependency directories
+/vendor/
+
+# System files
+.DS_Store
+*.log
